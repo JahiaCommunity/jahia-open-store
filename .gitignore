@@ -1,0 +1,17 @@
+# Eclipse
+/.classpath
+/.project
+/.settings
+
+# Intellij
+.idea
+.idea/
+*.iml
+*.ipr
+.DS_Store
+
+# Maven
+target
+
+# Jahia DX Studio
+repository.xml.generated

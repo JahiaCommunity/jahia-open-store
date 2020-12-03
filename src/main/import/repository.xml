@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content xmlns:j="http://www.jahia.org/jahia/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0">
+   <modules jcr:primaryType="jnt:modules">
+      <jahiaopenstore j:dependencies="default"
+                      j:installedModules="org.jahiacommunity.jahiaopenstore"
+                      j:modulePriority="0"
+                      j:moduleType="templatesSet"
+                      j:title="org.jahiacommunity.jahiaopenstore"
+                      jcr:primaryType="jnt:module">
+         <portlets jcr:primaryType="jnt:portletFolder"/>
+         <files jcr:primaryType="jnt:folder"/>
+         <contents jcr:primaryType="jnt:contentFolder">
+            <modules-repository jcr:mixinTypes="jmix:accessControlled"
+                                jcr:primaryType="jnt:contentFolder">
+               <j:acl j:inherit="true" jcr:primaryType="jnt:acl"/>
+               <j:translation_en jcr:language="en"
+                                 jcr:mixinTypes="mix:title"
+                                 jcr:primaryType="jnt:translation"
+                                 jcr:title="Private Open Store Modules Repository"/>
+            </modules-repository>
+         </contents>
+         <templates jcr:primaryType="jnt:templatesFolder">
+            <files jcr:primaryType="jnt:folder">
+               <themes jcr:primaryType="jnt:folder">
+                  <default jcr:primaryType="jnt:folder"/>
+               </themes>
+            </files>
+            <contents jcr:primaryType="jnt:contentFolder"/>
+            <base j:view="org.jahiacommunity.jahiaopenstore"
+                  jcr:mixinTypes="jmix:theme"
+                  jcr:primaryType="jnt:template">
+               <home jcr:primaryType="jnt:pageTemplate"/>
+            </base>
+         </templates>
+         <home j:isHomePage="true"
+               j:templateName="home"
+               jcr:primaryType="jnt:page">
+            <j:translation_en jcr:language="en"
+                              jcr:mixinTypes="mix:title"
+                              jcr:primaryType="jnt:translation"
+                              jcr:title="Home"/>
+         </home>
+      </jahiaopenstore>
+   </modules>
+</content>

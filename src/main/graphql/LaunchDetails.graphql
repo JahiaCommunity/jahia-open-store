@@ -1,0 +1,30 @@
+query LaunchDetails{
+    organization(login: "JahiaCommunity") {
+        repositories(privacy: PUBLIC, orderBy: {field: CREATED_AT, direction: DESC}, first: 100) {
+            nodes {
+                id
+                name
+                resourcePath
+                description
+                url
+                packages(first: 1, packageType: MAVEN) {
+                    nodes {
+                        name
+                        latestVersion {
+                            version
+                            files(last: 1) {
+                                nodes {
+                                    id
+                                    name
+                                    url
+                                    size
+                                    updatedAt
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

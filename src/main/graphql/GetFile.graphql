@@ -1,0 +1,23 @@
+query GetFile($repoName: String!, $pkgName: [String]!, $versionNb: String!) {
+    organization(login: "JahiaCommunity") {
+        repository(name: $repoName) {
+            packages(names: $pkgName, last: 1) {
+                nodes {
+                    name
+                    version(version: $versionNb) {
+                        version
+                        files(first: 1) {
+                            nodes {
+                                id
+                                name
+                                url
+                                size
+                                updatedAt
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

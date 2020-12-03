@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean name="githubProxyController" class="org.jahiacommunity.jahiaopenstore.proxy.GithubProxy">
+        <!--<property name="httpClientService" value="HttpClientService"/>-->
+    </bean>
+    <bean name="githubProxyMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="urlMap">
+            <map>
+                <entry key="/githubproxy/**" value-ref="githubProxyController"/>
+            </map>
+        </property>
+    </bean>
+</beans>
