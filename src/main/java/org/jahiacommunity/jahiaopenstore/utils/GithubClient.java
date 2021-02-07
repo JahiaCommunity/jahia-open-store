@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 import static org.jahiacommunity.jahiaopenstore.utils.Constants.*;
 
@@ -18,8 +19,14 @@ public class GithubClient {
     private static transient Logger logger = LoggerFactory.getLogger(GithubClient.class);
 
     public static ApolloClient getClient() {
-         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        if (logger.isDebugEnabled()) {
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        } else if (logger.isInfoEnabled()) {
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+        } else {
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
+        }
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
@@ -30,6 +37,9 @@ public class GithubClient {
                     logger.debug("AUTH_TAG:" + AUTH_HEADER);
                     return chain.proceed(builder.build());
                 })
+                .connectTimeout(180, TimeUnit.SECONDS)
+                .writeTimeout(180, TimeUnit.SECONDS)
+                .readTimeout(300, TimeUnit.SECONDS)
                 .build();
 
         // First, create an `ApolloClient`
