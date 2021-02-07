@@ -17,25 +17,29 @@
     <description>This is the custom profile module (org.jahiacommunity.jahiaopenstore) for running on a Digital Experience Manager server.</description>
 
     <scm>
-        <connection>scm:dummy:uri</connection>
-        <developerConnection>scm:dummy:uri</developerConnection>
+        <connection>scm:git:git@github.com:JahiaCommunity/jahia-open-store.git</connection>
+        <developerConnection>scm:git:git@github.com:JahiaCommunity/jahia-open-store.git</developerConnection>
+        <url>scm:git:git@github.com:JahiaCommunity/jahia-open-store.git</url>
+        <tag>HEAD</tag>
     </scm>
 
-    <repositories>
-        <repository>
-            <id>jahia-public</id>
-            <name>Jahia Public Repository</name>
-            <url>https://devtools.jahia.com/nexus/content/groups/public</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
+    <organization>
+        <name>Jahia Community</name>
+        <url>https://www.jahiacommunity.org</url>
+    </organization>
+    <developers>
+        <developer>
+            <id>cedfou</id>
+            <name>FOURNEAU Cédric</name>
+            <organization>JahiaCommunity</organization>
+        </developer>
+    </developers>
+    <contributors>
+        <contributor>
+            <organization>JahiaCommunity</organization>
+        </contributor>
+    </contributors>
+    <url>https://github.com/JahiaCommunity/jahia-open-store</url>
 
     <dependencies>
         <dependency>
@@ -98,6 +102,59 @@
             </exclusions>
         </dependency>
     </dependencies>
+
+
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/JahiaCommunity/jahia-open-store/issues</url>
+    </issueManagement>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub JahiaCommunity Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/JahiaCommunity/jahia-open-store</url>
+        </repository>
+    </distributionManagement>
+
+
+    <profiles>
+        <profile>
+            <id>github</id>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>https://repo1.maven.org/maven2</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>github</id>
+                    <name>GitHub JahiaCommunity Apache Maven Packages</name>
+                    <url>https://maven.pkg.github.com/JahiaCommunity/jahia-open-store</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+
+    <repositories>
+        <repository>
+            <id>jahia-public</id>
+            <name>Jahia Public Repository</name>
+            <url>https://devtools.jahia.com/nexus/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
