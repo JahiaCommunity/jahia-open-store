@@ -16,7 +16,6 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import static org.jahiacommunity.jahiaopenstore.utils.Constants.*;
-import static org.jahiacommunity.jahiaopenstore.LaunchDetailsQuery.*;
 import static org.jahiacommunity.jahiaopenstore.utils.GithubClient.toCompletableFuture;
 
 public class GithubService {
@@ -51,7 +50,7 @@ public class GithubService {
 
                 JSONArray modulesList = new JSONArray();
                 for (Node repoNode : reposNodesList){
-                    // "name": "ml-image-auto"
+                    // "name": artifactId; ex: "ml-image-auto"
                     String repoId = repoNode.getId();
                     String repoName = repoNode.getName();
                     String resourcePath = repoNode.getResourcePath().toString();
@@ -65,7 +64,7 @@ public class GithubService {
                         module.put("path", resourcePath);
                         module.put("jcrprimarytype", "jnt:forgeModule");
                         module.put("remoteUrl", repoUrl);
-                        //"name": "org.jahiacommunity.modules.ml-image-auto"
+                        //"name": groupID.artifactID; ex: "org.jahiacommunity.modules.ml-image-auto"
                         String pkgName = pkg.getName();
                         int ind = pkgName.lastIndexOf(repoName);
                         if (ind > 1) {
@@ -90,7 +89,7 @@ public class GithubService {
                                 if (filesNodes != null) {
                                     Node2 file = filesNodes.get(0);
                                     //String downloadUrl = file.getUrl().get().toString();
-                                    String downloadUrl = proxyServerUrl+"?pkgName="+pkgName+"&repoName="+repoName+"&versionNb="+versNb ;
+                                    String downloadUrl = PROXY_SERVER_URL+"?pkgName="+pkgName+"&repoName="+repoName+"&versionNb="+versNb ;
                                     version.put("downloadUrl", downloadUrl);
                                 }
                             }
