@@ -13,4 +13,15 @@
             </map>
         </property>
     </bean>
+
+    <bean name="githubProxyDocController" class="org.jahiacommunity.jahiaopenstore.proxy.GithubDocProxy">
+        <!--<property name="httpClientService" value="HttpClientService"/>-->
+    </bean>
+    <bean name="githubProxyDocMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="urlMap">
+            <map>
+                <entry key="/githubproxydoc/**" value-ref="githubProxyDocController"/>
+            </map>
+        </property>
+    </bean>
 </beans>

@@ -55,7 +55,8 @@ public class GithubService {
                     String repoName = repoNode.getName();
                     String resourcePath = repoNode.getResourcePath().toString();
                     String repoDesc = repoNode.getDescription().orElse("");
-                    String repoUrl = repoNode.getUrl().toString();
+                    //String repoUrl = repoNode.getUrl().toString();
+                    String repoUrl = PROXY_SERVER_DOC_URL+"?repoName="+repoName;
 
                     List<Node1> packagesList = repoNode.getPackages().getNodes().orElse(null);
                     for (Node1 pkg : packagesList){
